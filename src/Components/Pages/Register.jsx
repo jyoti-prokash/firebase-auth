@@ -1,12 +1,11 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../Firebase/firebase.init";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
   const { createUser, setProfile } = useContext(AuthContext);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -17,9 +16,9 @@ const Register = () => {
       .then((result) => {
         setProfile(name, image)
           .then((res) => {
-            console.log(result.user);
+            
           }).catch((error) => {
-            console.log(error);
+          
           });
       })
       .catch((error) => {
